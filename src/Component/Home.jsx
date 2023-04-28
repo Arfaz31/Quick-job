@@ -13,7 +13,7 @@ const Home = () => {
     }, [])
 
     const jobFeatures = useLoaderData();
-    console.log(jobFeatures)
+    
     return (
         <div>
          <div className=" my-container flex flex-col items-center justify-between lg:flex-row px-8 ">
