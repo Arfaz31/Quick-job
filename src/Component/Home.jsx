@@ -1,14 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import image from '../assets/All Images/P3OLGJ1 copy 1.png'
 import JobCategories from './JobCategories';
+import { useLoaderData } from 'react-router-dom';
+import FeaturesJob from './FeaturesJob';
 const Home = () => {
     const [categories, setCategories] = useState([]);
-    console.log(categories)
+   
     useEffect(() => {
        fetch('jobcatagories.json')
        .then(res => res.json())
        .then(data =>setCategories(data) )
     }, [])
+
+    const jobFeatures = useLoaderData();
+    console.log(jobFeatures)
     return (
         <div>
          <div className=" my-container flex flex-col items-center justify-between lg:flex-row px-8 ">
@@ -38,9 +43,9 @@ const Home = () => {
         </div>
       </div>
 
-       {/* job category <h1 className="mt-20 text-center font-bold text-4xl mb-4">Job Category List</h1>*/}     
+       {/* job category */}     
       <div>
-      <h1 className='text-center font-bold mt-32 text-4xl mb-4'>Job Category List</h1>
+      <h1 className='text-center font-bold  mt-32 text-4xl mb-4'>Job Category List</h1>
             <p className="text-center font-semibold text-xl text-gray-700">Explore thousands of job opportunities with all the information you need. Its your future</p>
 
         <div className="flex flex-col space-y-4 mt-10 items-center justify-around lg:flex-row lg:mx-20 lg:mt-10 lg:mb-10">
@@ -52,8 +57,25 @@ const Home = () => {
             }
         </div>
       </div>
+
+      {/* job Features */}  
+      <div className="my-container">
+<h1 className="text-center text-4xl  font-bold">Featured Jobs</h1>
+<p className="text-center font-semibold text-xl text-gray-700 mt-3 mb-14">Explore thousands of job opportunities with all the information you need. Its your future</p>
+
+<div  className="grid gap-6 lg:mx-40 mb-8 lg:grid-cols-2 sm:grid-cols-1">
+   {
+    jobFeatures.map(jobFeature =><FeaturesJob
+      key={jobFeature.id}
+      jobFeature={jobFeature}
+    ></FeaturesJob>)
+   }
+</div>
+</div>
         </div>
     );
 };
 
 export default Home;
+
+
