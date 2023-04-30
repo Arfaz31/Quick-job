@@ -33,6 +33,15 @@ const AppliedJob = () => {
     },[jobLoad])
   
 
+    const displayOnSite =()=>{
+        const onSite = jobLoad.filter(jobCard => jobCard.remoteOrOnsite === "Onsite")
+         setjobCardSet(onSite)
+       } 
+      
+       const displayRemortSite =()=>{
+        const remort = jobLoad.filter(jobCard => jobCard.remoteOrOnsite === "Remote")
+         setjobCardSet(remort)
+       }
    
 
     return (
@@ -43,9 +52,9 @@ const AppliedJob = () => {
        
       </div>
       
-         <div className="flex justify-center lg:justify-end lg:mr-44 space-x-6 mb-6" >
-             <button  className="mt-4   inline-flex items-center h-9 px-4  font-medium text-white transition duration-200 rounded shadow-md  md:mb-0 bg-indigo-600 hover:bg-blue-700">Remote</button>
-             <button  className="mt-4   inline-flex items-center h-9 px-4  font-medium text-white transition duration-200 rounded shadow-md  md:mb-0 bg-indigo-600 hover:bg-blue-700">Onsite</button>
+      <div className="flex justify-center lg:justify-end lg:mr-44 space-x-6 mb-6" >
+             <button onClick={()=> displayRemortSite()} className="mt-4   inline-flex items-center h-9 px-4  font-medium text-white transition duration-200 rounded shadow-md  md:mb-0 bg-indigo-600 hover:bg-blue-700">Remort</button>
+             <button onClick={()=> displayOnSite()} className="mt-4   inline-flex items-center h-9 px-4  font-medium text-white transition duration-200 rounded shadow-md  md:mb-0 bg-indigo-600 hover:bg-blue-700">Onsite</button>
          </div>
         
       

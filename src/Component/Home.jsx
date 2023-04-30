@@ -5,6 +5,11 @@ import FeaturesJob from './FeaturesJob';
 const Home = () => {
     const [categories, setCategories] = useState([]);
    const [featureJobs, setfeatureJobs] = useState([])
+   const [showAll, setshowAll] =useState(false)
+  
+   const handleShowAll = () =>{
+    setshowAll(true)
+  }
     useEffect(() => {
        fetch('jobcatagories.json')
        .then(res => res.json())
@@ -22,6 +27,7 @@ const Home = () => {
       .then(data=> setfeatureJobs(data))
     }
 
+    
     
     return (
         <div>
@@ -74,13 +80,20 @@ const Home = () => {
 
 <div  className="grid gap-6 lg:mx-40 mb-8 lg:grid-cols-2 sm:grid-cols-1">
    {
-    featureJobs.map(jobFeature =><FeaturesJob
+    
+    featureJobs.slice(0, showAll ? 10 : 4).map(jobFeature =><FeaturesJob
       key={jobFeature.id}
       jobFeature={jobFeature}
+      
     ></FeaturesJob>)
+    
    }
 </div>
 </div>
+
+<div className=" flex justify-center">
+        <button onClick={handleShowAll} className="mt-4    h-9 px-4  font-medium text-white transition duration-200 rounded shadow-md  md:mb-0 bg-indigo-600 hover:bg-blue-700">Show All</button>
+        </div>
         </div>
     );
 };
