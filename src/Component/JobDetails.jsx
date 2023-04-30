@@ -1,20 +1,32 @@
 import React, { useEffect, useState } from 'react';
 import { useLoaderData, useParams } from 'react-router-dom';
+import { addToDb } from './utils/fakeDB';
+
 
 const JobDetails = () => {
 
     const jobData = useLoaderData();
-    console.log(jobData)
     const { id } = useParams();
     const [jobDetails, setjobDetails] = useState({});
+    
   
   
     useEffect(() => {
       const jobDetail = jobData.find((jobId) => jobId.id == id);
-      console.log(jobDetail)
       setjobDetails(jobDetail);
+
+      
     }, []);
 
+
+    const addAppliedJob = (id) => {
+      
+      addToDb(id);
+      
+   
+    }
+
+    
     return (
         <div>
         <h1 className="text-center mb-20 text-4xl font-bold bg-gray-100 p-10">Job Detail</h1>
@@ -51,7 +63,12 @@ const JobDetails = () => {
                   </div>
               </div>
               </div>
-              <button  className="ml-10 mt-4  h-10 w-80 text-center mb-3  font-medium text-white transition duration-200 rounded shadow-md  md:mb-0 bg-blue-400 hover:bg-blue-700" >Apply Now</button>
+              <button  
+              onClick={() => addAppliedJob (id)}
+              className="ml-10 mt-4  h-10 w-80 text-center mb-3  font-medium text-white transition duration-200 rounded shadow-md  md:mb-0 bg-blue-400 hover:bg-blue-700" 
+              >
+              Apply Now
+              </button>
           </div>
         </div>
       </div>

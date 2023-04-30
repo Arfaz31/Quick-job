@@ -12,22 +12,26 @@ import AppliedJob from './Component/AppliedJob.jsx';
 import Blog from './Component/Blog.jsx';
 import JobDetails from './Component/JobDetails.jsx';
 
+
+
+
 const router = createBrowserRouter([
 {
   path: '/',
   element: <App/>,
+  
   children: [
     {
       path:'/',
-     element: <Home/>,
-     loader: () => fetch('jobfeatures.json')
+     element: <Home/>
+     
     },
     {
       path: 'statistics',
       element:<Statistics/>
     },
     {
-      path:'appliedjob',
+      path:'/appliedjob',
       element:<AppliedJob/>,
     
     },

@@ -1,11 +1,23 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+
 
 const AppliedJob = () => {
+  
+ 
+
     return (
+        
         <div>
-            AppliedJob
+            cart
         </div>
     );
 };
 
 export default AppliedJob;
+
+
+
+{/*
+
+
+*/}

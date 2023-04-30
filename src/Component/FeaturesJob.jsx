@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const FeaturesJob = ({jobFeature}) => {
+  
     return (
         <div className="border p-8 rounded">
         <img src={jobFeature.companyLogo} alt="company logo" />
